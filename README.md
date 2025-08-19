@@ -34,71 +34,97 @@ This project implements a Retrieval-Augmented Generation (RAG) based chatbot des
 ### 2. Complaint Creation API
 - **Purpose:** Create a RESTful API to handle complaint creation and storage.
 - **Endpoints:**
-  - **POST /complaints:** Create a new complaint.
-    - **Input (JSON):**
-      ```json
-      {
-        "name": "string",
-        "phone_number": "string",
-        "email": "string",
-        "complaint_details": "string"
-      }
-    - **Output (JSON):**
-      ```json
-      {
-        "complaint_id": "unique_string",
-        "message": "Complaint created successfully"
-      }
-  - **GET /complaints/<complaint_id>:** Retrieve complaint details by ID.
-     - **Output (JSON):**
-          ```json
-          {
-            "complaint_id": "string",
-            "name": "string",
-            "phone_number": "string",
-            "email": "string",
-            "complaint_details": "string",
-            "created_at": "datetime",
-            "status": "string"
-          }
+  - **POST /complaints:** Create a new complaint.  
+    **Input (JSON):**
+    ```json
+    {
+      "name": "string",
+      "phone_number": "string",
+      "email": "string",
+      "complaint_details": "string"
+    }
+    ```  
+    **Output (JSON):**
+    ```json
+    {
+      "complaint_id": "unique_string",
+      "message": "Complaint created successfully"
+    }
+    ```
+  - **GET /complaints/<complaint_id>:** Retrieve complaint details by ID.  
+    **Output (JSON):**
+    ```json
+    {
+      "complaint_id": "string",
+      "name": "string",
+      "phone_number": "string",
+      "email": "string",
+      "complaint_details": "string",
+      "created_at": "datetime",
+      "status": "string"
+    }
+    ```
 
 # Installation
 ### Prerequisites
-
-Python 3.8+
-pip (Python package manager)
+- Python 3.8+
+- pip (Python package manager)
 
 # Setup
-
 ### Clone the Repository:
+```bash
 git clone https://github.com/your-username/rag-chatbot.git
 cd rag-chatbot
+```
 
 ### Create a Virtual Environment:
+```bash
 python -m venv venv
 source venv/bin/activate  # On Windows: venv\Scripts\activate
-
+```
 ### Install Dependencies:
+```bash
 pip install -r requirements.txt
-
+```
 ### Set Up Environment Variables:
 Create a .env file in the root directory with your Google API key:
 
+```bash
 GOOGLE_API_KEY=your_api_key_here
-
+```
 (Optional) Set DATABASE_URL for a custom database or leave default (SQLite).
 
+# Organize Project Structure:
 
-### Prepare the Knowledge Base:
-Ensure faqs.pdf is placed in the knowledge_base directory (a sample is provided).
+### Create routes folder and move complaints.py:
+```bash
+
+mkdir routes
+mv complaints.py routes/
+```
+(Windows CMD: mkdir routes and move complaints.py routes\)
+(Windows PowerShell: New-Item -ItemType Directory -Name "routes" and Move-Item -Path "complaints.py" -Destination "routes\")
+
+### Create knowledge_base folder and move faqs.pdf:
+```bash
+
+mkdir knowledge_base
+mv faqs.pdf knowledge_base/
+```
+
+(Windows CMD: mkdir knowledge_base and move faqs.pdf knowledge_base\)
+(Windows PowerShell: New-Item -ItemType Directory -Name "knowledge_base" and Move-Item -Path "faqs.pdf" -Destination "knowledge_base\")
+
 
 # Run the Application:
 ### Start the Flask backend:
+```bash
 python app.py
-
+```
 ### In a separate terminal, start the Streamlit frontend:
+```bash
 streamlit run chat_app.py
-
+```
 
 
 
