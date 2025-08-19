@@ -1,39 +1,3 @@
-# import asyncio
-# import aiohttp
-
-# async def fetch(session, url):
-#     async with session.get(url) as response:
-#         data = await response.json()
-#         return data
-
-# async def fetch_both():
-#     url1 = "https://jsonplaceholder.typicode.com/todos/1"
-#     url2 = "https://dummyjson.com/products/1"
-    
-#     async with aiohttp.ClientSession() as session:
-#         task1 = asyncio.create_task(fetch(session, url1))
-#         task2 = asyncio.create_task(fetch(session, url2))
-        
-#         result1, result2 = await asyncio.gather(task1, task2)
-        
-#         print(result1)
-#         print(result2)
-
-# # Run the asynchronous function
-# if __name__ == "__main__":
-#     asyncio.run(fetch_both())
-# from fastapi import FastAPI
-# import httpx
-
-# app = FastAPI()
-
-# @app.get("/external-data")
-# async def get_external_data():
-#     url = "https://api.adviceslip.com/advice"
-    
-#     async with httpx.AsyncClient() as client:
-#         response = await client.get(url)
-#         return response.json()
 
 import sqlite3
 
@@ -67,3 +31,4 @@ def view_complaints():
 
 if __name__ == "__main__":
     view_complaints()
+
